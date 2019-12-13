@@ -27,12 +27,18 @@
             </div>
         </div>-->
         
-        <div ng-app="app">
+        <!--<div ng-app="app">
             <div ng-controller="appCtrl">
                 <my-directive info="naomi"></my-directive>
                 <hr />
                 <my-directive info="igor"></my-directive>
             </div>
+        </div>-->
+
+        <div ng-app="app" ng-controller="appCtrl">
+            Date format: <input type="text" ng-model="format"/>
+            <hr />
+            Current time is: <span current-time="format"></span>
         </div>
 
     </body>

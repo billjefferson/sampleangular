@@ -72,32 +72,63 @@
 //    }
 //})
 
+//angular.module("app", [])
+//.controller("appCtrl", ["$scope", function ($scope) {
+//    $scope.naomi = {
+//        name: "Naomi 6",
+//        address: "Ampitheater 6"
+//    };
+//    $scope.igor = {
+//        name: "Igor",
+//        address: "Somewhere else"
+//    };
+
+//}])
+//.directive("myDirective", function () {
+//    return {
+//        restrict: "E",
+//        //$scope.customerInfo=info="naomi"
+//        //$scope.customerInfo=info="igor"
+//        /*
+//        scope: {
+//          // same as '=customer'
+//          customer: '='
+//        },
+//        */
+//        scope: {
+//            customerInfo: "=info"
+//        },
+//        templateUrl: "new-directives.html"
+//    }
+//})
+
 angular.module("app", [])
 .controller("appCtrl", ["$scope", function ($scope) {
-    $scope.naomi = {
-        name: "Naomi 6",
-        address: "Ampitheater 6"
-    };
-    $scope.igor = {
-        name: "Igor",
-        address: "Somewhere else"
-    };
-
+    $scope.format = "M/d/yy h:mm:ss a"
 }])
-.directive("myDirective", function () {
-    return {
-        restrict: "E",
-        //$scope.customerInfo=info="naomi"
-        //$scope.customerInfo=info="igor"
-        /*
-        scope: {
-          // same as '=customer'
-          customer: '='
-        },
-        */
-        scope: {
-            customerInfo: "=info"
-        },
-        templateUrl: "new-directives.html"
+.directive("currentTime", ["$interval", "dateFilter", function ($interval, dateFilter) {
+    function link(scope, element, attrs) {
+        var format;
+
+        function updateTime() {
+            element.text(dateFilter(new Date(), format));
+        }
+        //watch the changes of date format inside the textbox
+        scope.$watch(attrs.currentTime, function (value) {
+            format = value;
+            updateTime();
+        })
+
+        element.on("$destroy", function () {
+            $interval.cancel(timeoutId);
+        })
+
+        timeoutId = $interval(function () {
+            updateTime();
+        }, 1000);
     }
-})
+
+    return {
+        link: link
+    }
+}])
