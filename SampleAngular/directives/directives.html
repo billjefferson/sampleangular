@@ -1,0 +1,39 @@
+﻿<html>
+    <head>
+        <script type="text/javascript" src="../Scripts/angular.js"></script>
+        <script type="text/javascript" src="directives.js"></script>
+    </head>
+
+    <body>
+        <!--<div ng-app="app" ng-controller="appCtrl">
+            <!--<my-customer></my-customer>-->
+
+            <!--<my-customer></my-customer>-->
+
+           <!-- <my-customer type="name"></my-customer>
+            <my-customer type="address"></my-customer>-->
+
+            <!--<my-customer></my-customer>-->
+
+        <!--</div>-->
+
+       <!-- <div ng-app="app">
+            <div ng-controller="appCtrl1">
+                <my-customer></my-customer>
+            </div>
+            <hr />
+            <div ng-controller="appCtrl2">
+                <my-customer></my-customer>
+            </div>
+        </div>-->
+        
+        <div ng-app="app">
+            <div ng-controller="appCtrl">
+                <my-directive info="naomi"></my-directive>
+                <hr />
+                <my-directive info="igor"></my-directive>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -113,9 +113,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="customizedmodal\customizedmodal.css" />
+    <Content Include="customizedmodal\customizedmodal.html" />
+    <Content Include="customizedmodal\customizedmodal.js" />
+    <Content Include="directives\directives.html" />
+    <Content Include="directives\directives.js" />
     <Content Include="q\q.html" />
     <Content Include="q\q.js" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
