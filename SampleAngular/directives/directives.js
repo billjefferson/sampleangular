@@ -102,33 +102,87 @@
 //    }
 //})
 
+//angular.module("app", [])
+//.controller("appCtrl", ["$scope", function (s) {
+//    s.format = "M/d/yy h:mm:ss a"
+//}])
+//.directive("currentTime", ["$interval", "dateFilter", function (i, d) {
+//    function l(scope, element, attr) {
+//        var timeOutId, format;
+
+//        function updateTime() {
+//            element.text(d(new Date(), format));
+//        }
+
+//        scope.$watch(attr.currentTime, function (value) {
+//            format = value;
+//            updateTime();
+//        })
+
+//        element.on("$destroy", function () {
+//            i.cancel(timeOutId);
+//        })
+
+//        timeOutId = i(function () {
+//            updateTime();
+//        }, 1000)
+//    }
+
+//    return {
+//        link: l
+//    }
+//}])
+
+//angular.module("app", [])
+//.controller("appCtrl", ["$scope", function (s) {
+//    s.name = "John";
+//}])
+//.directive("myDialog", function () {
+//    return {
+//        restrict: "E",
+//        transclude: true,
+//        scope: {},
+//        templateUrl: "new-directives.html"
+//    }
+//})
+
+//angular.module("app", [])
+//.controller("appCtrl", ["$scope", function (s) {
+//    s.name = "John";
+//}])
+//.directive("myDialog", function () {
+//    return {
+//        restrict: "E",
+//        transclude: true,
+//        templateUrl: "new-directives.html",
+//        link: function (scope) {
+//            scope.name = "Janjan";
+//        }
+
+//    }
+//})
+
 angular.module("app", [])
-.controller("appCtrl", ["$scope", function ($scope) {
-    $scope.format = "M/d/yy h:mm:ss a"
+.controller("appCtrl", ["$scope", "$timeout", function (s, t) {
+    s.name = "John";
+    s.message = "";
+    s.hideDialog = function (message) {
+        s.message = message;
+        s.dialogIsHidden = true;
+        t(function () {
+            s.message = "";
+            s.dialogIsHidden = false;
+        }, 2000);
+    };
+
 }])
-.directive("currentTime", ["$interval", "dateFilter", function ($interval, dateFilter) {
-    function link(scope, element, attrs) {
-        var format;
-
-        function updateTime() {
-            element.text(dateFilter(new Date(), format));
-        }
-        //watch the changes of date format inside the textbox
-        scope.$watch(attrs.currentTime, function (value) {
-            format = value;
-            updateTime();
-        })
-
-        element.on("$destroy", function () {
-            $interval.cancel(timeoutId);
-        })
-
-        timeoutId = $interval(function () {
-            updateTime();
-        }, 1000);
-    }
-
+.directive("myDialog", function () {
     return {
-        link: link
+        restrict: "E",
+        transclude: true,
+        scope:{
+            close:"&onClose"
+        },
+        templateUrl: "new-directives.html",
     }
-}])
+})

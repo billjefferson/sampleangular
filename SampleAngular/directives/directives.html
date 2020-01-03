@@ -35,10 +35,31 @@
             </div>
         </div>-->
 
-        <div ng-app="app" ng-controller="appCtrl">
-            Date format: <input type="text" ng-model="format"/>
-            <hr />
-            Current time is: <span current-time="format"></span>
+        <!--<div ng-app="app">
+            <div ng-controller="appCtrl">
+                Date format: <input type="text" ng-model="format"/>
+                <hr />
+                Current time: <span current-time="format"></span>
+            </div>
+        </div>-->
+
+<!--        <div ng-app="app">
+            <div ng-controller="appCtrl">
+                <my-dialog>Check out the contents, {{name}}!</my-dialog>
+            </div>
+        </div>-->
+
+<!--        <div ng-app="app">
+            <div ng-controller="appCtrl">
+                <my-dialog>Check out the contents, {{name}}!</my-dialog>
+            </div>
+        </div>-->
+
+        <div ng-app="app">
+            <div ng-controller="appCtrl">
+                {{message}}
+                <my-dialog ng-hide="dialogIsHidden" on-close="hideDialog(message)">Check out the contents, {{name}}!</my-dialog>
+            </div>
         </div>
 
     </body>

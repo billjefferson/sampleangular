@@ -6,3 +6,12 @@
 
 <!-- Name {{customerInfo.name}} Address: {{customerInfo.address}}-->
 
+<!--Under this is a div that can be transcluded!
+<div class="alert" ng-transclude>This is a div with transclude!</div>-->
+
+<!--<div class="alert" ng-transclude></div>-->
+<div>
+    <a href ng-click="close({message: 'closing for now!'})">&times;</a>
+    <div class="alert" ng-transclude></div>
+</div>
+
